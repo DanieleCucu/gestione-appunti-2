@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Dettaglio Appunto – Appunti{% endblock %}
+{% block content %}
+  <div class="note-detail-page">
+    <div class="container note-detail-container my-5">
+      <!-- Colonna sinistra: contenuto e macro-tematiche -->
+      <div class="note-content">
+        <h2>{{ note.title }}</h2>
+        <p class="text-secondary mb-2"><strong>Macro-tematiche:</strong> {{ note.macro_tematiche or 'Nessuna' }}</p>
+        <p class="text-muted mb-3">Di {{ note.author.username }}</p>
+        <div class="mb-4 text-white">{{ note.content }}</div>
+        {% if current_user.is_authenticated %}
+          <form method="POST" class="mt-4">
+            <div class="form-group">
+              <textarea class="form-control" name="comment" rows="3" placeholder="Aggiungi un commento..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Invia Commento</button>
+          </form>
+        {% endif %}
+        <div class="comments-wrapper">
+          <h3>Commenti</h3>
+          {% for c in note.comments %}
+            <div class="comment-card">
+              <div class="meta">
+                <span class="author">{{ c.author.username }}</span>
+                <span class="timestamp">{{ c.timestamp.strftime('%d/%m/%Y %H:%M') }}</span>
+              </div>
+              <div class="text">{{ c.comment_text }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Colonna destra: sidebar allegati -->
+      <aside class="attachments">
+        <h4>Allegati</h4>
+        {% for img in note.images %}
+          <img src="{{ url_for('static', filename='uploads/'+img.image) }}"
+               class="attachment-thumb"
+               data-toggle="modal"
+               data-target="#imgModal"
+               data-src="{{ url_for('static', filename='uploads/'+img.image) }}"
+               alt="Attachment">
+        {% endfor %}
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal per immagini ingrandite -->
+  <div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body text-center">
+          <img src="#" class="modal-img" id="modalImage">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.attachment-thumb').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('modalImage').setAttribute('src', img.dataset.src);
+        $('#imgModal').modal('show');
+      });
+    });
+  </script>
+{% endblock %}

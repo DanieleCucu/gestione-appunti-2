@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Carica Appunto – Appunti{% endblock %}
+{% block content %}
+  <div class="container my-5">
+    <h2>Carica un Nuovo Appunto</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">Titolo</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="content">Contenuto</label>
+        <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="macro_tematiche">Macro-tematiche</label>
+        <input type="text" class="form-control" id="macro_tematiche" name="macro_tematiche">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="public" name="public">
+        <label for="public" class="form-check-label">Rendi pubblico</label>
+      </div>
+      <div class="form-group">
+        <label for="cover">Immagine di copertina</label>
+        <input type="file" class="form-control-file" id="cover" name="cover">
+      </div>
+      <div class="form-group">
+        <label for="attachments">Allegati aggiuntivi</label>
+        <input type="file" class="form-control-file" id="attachments" name="attachments" multiple>
+      </div>
+      <button type="submit" class="btn btn-success">Carica</button>
+    </form>
+  </div>
+{% endblock %}

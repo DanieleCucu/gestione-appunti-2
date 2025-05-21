@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: gestione-appunti
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python app.py"

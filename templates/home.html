@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Home – Appunti{% endblock %}
+{% block content %}
+  <section class="hero text-white">
+    <h1>Condividi. Impara. Cresci.</h1>
+    <form method="POST" class="w-50 mx-auto mt-4">
+      <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Cerca tra le note..." value="{{ request.form.search }}">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit">Cerca</button>
+        </div>
+      </div>
+    </form>
+    <a href="{{ url_for('upload') }}" class="btn btn-success btn-lg mt-3">Carica un Appunto</a>
+  </section>
+
+  <div class="home-page">
+    <div class="container my-5">
+      <h2 class="mb-4 text-white">Note Pubbliche</h2>
+      <div class="row">
+        {% for note in notes %}
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-lg">
+              {% if note.cover_image %}
+                <img src="{{ url_for('static', filename='uploads/'+note.cover_image) }}" class="card-img-top" alt="Cover">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title text-white">{{ note.title }}</h5>
+                <p class="card-text text-secondary">{{ note.content[:100] }}…</p>
+                <a href="{{ url_for('note_detail', note_id=note.id) }}" class="btn btn-view btn-sm">Visualizza</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

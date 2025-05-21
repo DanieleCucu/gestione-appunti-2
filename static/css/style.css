@@ -1,0 +1,140 @@
+/* Theme dark globale */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+  }
+  
+  /* Sfondi solo per pagine specifiche */
+  .dashboard-page,
+  .note-detail-page,
+  .auth-page {
+    background: url('/static/images/hero-dark.png') center/cover no-repeat fixed;
+    min-height: 100vh;
+  }
+  
+ 
+  
+  /* Hero (solo barra ricerca) */
+  .hero {
+    height: auto;
+    padding: 4rem 0;
+    background: url('/static/images/hero-dark.png') center/cover no-repeat fixed;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Input-group: allinea controllo e bottone */
+  .input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: calc(2.25rem + 2px);
+  }
+  .input-group-append .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: calc(2.25rem + 2px);
+  }
+  
+  /* Card preview sempre nero */
+  .card {
+    background: #000 !important;
+    border: none;
+    border-radius: 12px;
+    color: #e0e0e0;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+  
+  /* Auth pages */
+  .auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/static/images/hero-dark.png') center/cover no-repeat fixed;
+  }
+  
+  /* Container generico */
+  .container {
+    padding-bottom: 2rem;
+  }
+  
+  /* Sezioni contenuto (note, moduli) */
+  .note-content, .form-container, .upload-container {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    color: #e0e0e0;
+  }
+  
+  /* Sidebar allegati */
+  .attachments {
+    background: #1b1b1d;
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 200px;
+  }
+  .attachments h4 {
+    color: #ddd;
+    margin-bottom: .5rem;
+  }
+  .attachments .attachment-thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: .5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  .attachments .attachment-thumb:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Layout pagina dettaglio: sidebar laterale */
+  .note-detail-container {
+    display: grid;
+    grid-template-columns: 2fr 200px;
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  /* Modal immagini centrato e contenuto */
+  .modal-dialog {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+  .modal-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  
+  /* Commenti */
+  .comments-wrapper { margin-top: 2rem; }
+  .comment-card { background: #1b1b1f; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; }
+  .comment-card .meta { display: flex; justify-content: space-between; color: #888; font-size: .9rem; }
+  .comment-card .text { color: #ccc; }
+  
+  /* Pulsanti */
+  .btn-view, .btn-edit, .btn-delete, .btn-primary { padding: .6rem 1rem; border-radius: 8px; min-width: 80px; margin: .25rem; }
+  .btn-view { background: #3a3a3c; color: #fafafa; }
+  .btn-edit { background: #4a4a2e; color: #fafafa; }
+  .btn-delete { background: #5e1e1e; color: #fafafa; }
+  .btn-primary { background: #3a3a3c; color: #fafafa; border: none; }
